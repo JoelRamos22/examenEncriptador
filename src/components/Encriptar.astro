@@ -1,0 +1,123 @@
+---
+interface Props {
+    title: string
+}
+const {title} = Astro.props
+---
+
+<div id="encriptar">
+    <textarea
+      name="texto"
+      class="absolute w-[42%] h-[60%] left-[13%] top-[15%] border-none font-normal text-3xl leading-[150%] bg-[#f3f5fc] placeholder:text-[#0a3871] focus:border-none focus:outline-none active:border-none active:outline-none"
+      id="texto"
+      cols="30"
+      rows="10"
+      placeholder="Ingresa el texto aquí"
+    ></textarea>
+
+    <div id="terminos" class="flex items-center p-0 gap-2 absolute w-[80%] left-[13%] top-[80%] ">
+      <p class="flex items-center font-normal text-xs leading-[150%] flex-grow-0 order-1 opacity-70"></p>
+        <img src="./IconoExclamacion.png" alt="">
+        <span>Solo letras minúsculas y sin acentos.</span>
+    </p>
+    </div>
+    <div id="botones" class="flex items-start gap-x-4 p-[1%] absolute w-[80%] left-[12%] top-[82%]">
+      <button id="btn-encriptar" class="flex items-center text-center p-[2%] justify-center w-[25%] bg-[#0a3871] rounded-3xl text-lg leading-5 text-white font-medium hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]" type="button">
+        Encriptar
+      </button>
+      <input
+        class="flex items-center text-center p-[2%] justify-center w-[25%] bg-[#d8dfe8] rounded-3xl text-lg font-medium leading-5 text-[#0A3871] border-2 border-[#0A3871] hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]"
+        type="button"
+        id="btn-desencriptar"
+        value="Desencriptar"
+        onclick=""
+      />
+    </div>
+</div>
+
+<script>
+
+    let encriptar = document.getElementById("btn-encriptar");
+    encriptar.addEventListener('click', () => {
+        encriptarBTN()
+    })  
+
+    let desencriptar = document.getElementById("btn-desencriptar");
+    desencriptar.addEventListener('click', () => {
+        desencriptarBTN()
+    })  
+    function encriptarBTN() {
+        let texto = document.getElementById("texto").value;
+        let tituloMensaje = document.getElementById("titulo-mensaje");
+        let parrafo = document.getElementById("parrafo");
+        let muñeco = document.getElementById("muñeco");
+    
+        // Verificar que solo contenga letras minúsculas y espacios
+        if (/^[a-z\s]*$/.test(texto)) {
+        let textoCifrado = texto
+            .replace(/e/gi, "enter")
+            .replace(/i/gi, "imes")
+            .replace(/a/gi, "ai")
+            .replace(/o/gi, "ober")
+            .replace(/u/gi, "ufat");
+    
+        if (texto.length != 0) {
+            document.getElementById("texto").value = textoCifrado;
+            tituloMensaje.textContent = "Texto encriptado con éxito";
+            parrafo.textContent = "";
+            muñeco.src = "./encriptado.jpg";
+        } else {
+            alert("Olvidaste poner tu mensaje")
+            resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
+        }
+        } else {
+        alert(
+            "error Ooops! solo se permiten minusculas con espacios, intentalo de nuevo." 
+        );
+        resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
+    }
+  }
+  
+  function desencriptarBTN() {
+    let texto = document.getElementById("texto").value;
+    let tituloMensaje = document.getElementById("titulo-mensaje");
+    let parrafo = document.getElementById("parrafo");
+    let muñeco = document.getElementById("muñeco");
+  
+    // Verificar que solo contenga letras minúsculas y espacios
+    if (/^[a-z\s]*$/.test(texto)) {
+      let textoCifrado = texto
+        .replace(/enter/gi, "e")
+        .replace(/imes/gi, "i")
+        .replace(/ai/gi, "a")
+        .replace(/ober/gi, "o")
+        .replace(/ufat/gi, "u");
+  
+      if (texto.length != 0) {
+        document.getElementById("texto").value = textoCifrado;
+        tituloMensaje.textContent = "Texto desencriptado con éxito";
+        parrafo.textContent = "";
+        muñeco.src = "./desencriptado.jpg";
+      } else {
+        alert("Olvidaste poner tu mensaje")
+        resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
+      }
+    } else {
+    alert(
+            "error Ooops! solo se permiten minusculas con espacios, intentalo de nuevo." 
+        );
+      resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
+    }
+  }
+  
+  // Función para resetear la UI a su estado inicial
+    function resetUI(titulo, mensaje) {
+        let tituloMensaje = document.getElementById("titulo-mensaje");
+        let parrafo = document.getElementById("parrafo");
+        let muñeco = document.getElementById("muñeco");
+    
+        tituloMensaje.textContent = titulo;
+        parrafo.textContent = mensaje;
+        muñeco.src = "./Muñeco.png";
+    }
+</script>

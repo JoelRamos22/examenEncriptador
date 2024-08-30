@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Encriptar from "../components/Encriptar.astro";
+import Message from "../components/Message.astro";
+import Logo from "../components/Logo.astro"
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="bg-black">
-		hola
-		<div>
-			<nav>
-				<a href="">a</a><a href="">e </a>i<a href=""></a>o<a href="">u</a>
-			</nav>
-		</div>
-	</main>
+<Layout title="Examen encriptador.">
+	<div class="relative w-screen h-screen bg-[#f3f5fc]">
+		<Logo></Logo>
+		<Encriptar title="encriptar"></Encriptar>
+		<Message></Message>
+	</div>
 </Layout>

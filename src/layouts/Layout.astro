@@ -1,4 +1,5 @@
 ---
+import {encriptar, desencriptar} from "../../module/logic.js" 
 interface Props {
 	title: string;
 }
@@ -13,27 +14,32 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
 	</body>
+	<script src="../../module/logic.js"></script>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+	:root{
+    --bg-prymary: #0A3871;
+    --bg-secondary: #D8DFE8;
+    --bg-tertiary: #F3F5FC;
+    --bg-quarter: #FFF;
+    --color-prymary: #fff;
+    --color-secondary: #0A3871;
+    --color-tertiary: #495057;
+    --bg-button-prymary: #0A3871;
+    --bg-button-secondary: #D8DFE8;
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family:"Inter", sans-serif;
+		background: var(--bg-tertiary);
 	}
 	code {
 		font-family:

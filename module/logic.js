@@ -1,4 +1,4 @@
-function encriptar() {
+export function encriptar() {
     let texto = document.getElementById("texto").value;
     let tituloMensaje = document.getElementById("titulo-mensaje");
     let parrafo = document.getElementById("parrafo");
@@ -22,12 +22,18 @@ function encriptar() {
         resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
       }
     } else {
-      swal("Ooops!", "Solo se permiten letras minúsculas y espacios", "warning");
+      Swal.fire(
+        {
+          icon: "error",
+          title: "Ooops!",
+          texto: "solo se permiten minusculas con espacios, intentalo de nuevo." 
+        }
+      );
       resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
     }
   }
   
-  function desencriptar() {
+export function desencriptar() {
     let texto = document.getElementById("texto").value;
     let tituloMensaje = document.getElementById("titulo-mensaje");
     let parrafo = document.getElementById("parrafo");
@@ -51,13 +57,19 @@ function encriptar() {
         resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
       }
     } else {
-      swal("Ooops!", "Solo se permiten letras minúsculas y espacios", "warning");
+      Swal.fire(
+        {
+          icon: "error",
+          title: "Ooops!",
+          texto: "solo se permiten minusculas con espacios, intentalo de nuevo." 
+        }
+      );
       resetUI("Ningún mensaje fue encontrado", "Ingresa el texto que deseas encriptar o desencriptar");
     }
   }
   
   // Función para resetear la UI a su estado inicial
-  function resetUI(titulo, mensaje) {
+function resetUI(titulo, mensaje) {
     let tituloMensaje = document.getElementById("titulo-mensaje");
     let parrafo = document.getElementById("parrafo");
     let muñeco = document.getElementById("muñeco");
