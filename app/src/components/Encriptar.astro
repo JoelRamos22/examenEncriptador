@@ -104,7 +104,7 @@ const {title} = Astro.props
     let muñeco = document.getElementById("muñeco");
   
     // Verificar que solo contenga letras minúsculas y espacios
-    if (/^[a-z\s]*$/.test(texto)) {
+    if (/^[a-z\s.,?!]*$/.test(texto)) {
       let textoCifrado = texto
         .replace(/enter/gi, "e")
         .replace(/imes/gi, "i")
