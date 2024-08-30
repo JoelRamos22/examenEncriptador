@@ -21,22 +21,41 @@ const {title} = Astro.props
         <span>Solo letras minúsculas y sin acentos.</span>
     </p>
     </div>
-    <div id="botones" class="flex items-start gap-x-4 p-[1%] absolute w-[80%] left-[12%] top-[82%]">
-      <button id="btn-encriptar" class="flex items-center text-center p-[2%] justify-center w-[25%] bg-[#0a3871] rounded-3xl text-lg leading-5 text-white font-medium hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]" type="button">
+    <div id="botones" class="flex items-start gap-x-4 p-[1%] absolute w-[80%] left-[8%] top-[82%]">
+      <button id="btn-encriptar" class="flex items-center text-center p-[2%] justify-center w-[20%] bg-[#0a3871] rounded-3xl text-lg leading-5 text-white font-medium hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]" type="button">
         Encriptar
       </button>
       <input
-        class="flex items-center text-center p-[2%] justify-center w-[25%] bg-[#d8dfe8] rounded-3xl text-lg font-medium leading-5 text-[#0A3871] border-2 border-[#0A3871] hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]"
+        class="flex items-center text-center p-[2%] justify-center w-[20%] bg-[#d8dfe8] rounded-3xl text-lg font-medium leading-5 text-[#0A3871] border-2 border-[#0A3871] hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]"
         type="button"
         id="btn-desencriptar"
         value="Desencriptar"
-        onclick=""
       />
+      <button id="btn-copiar" class="flex items-center text-center p-[2%] justify-center w-[20%] bg-[#0a3871] rounded-3xl text-lg leading-5 text-white font-medium hover:m-[0.3%] hover:w-[24.5%] hover:p-[1.8%]" type="button">
+        Copiar Texto
+      </button>
     </div>
 </div>
 
 <script>
+    let copiarTextobtn = document.getElementById("btn-copiar")
+    copiarTextobtn.addEventListener('click', () => {
+      copiarTexto()
+    })
+    function copiarTexto() {
+      // Obtener el textarea por su ID
+      let textarea = document.getElementById("texto").value;
 
+      // Seleccionar el texto en el textarea
+      let text = textarea;
+
+      // Copiar el texto al portapapeles
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Texto copiado al portapapeles");
+      }).catch(err => {
+        alert("Hubo un error al copiar el texto: " + err);
+      });
+    }
     let encriptar = document.getElementById("btn-encriptar");
     encriptar.addEventListener('click', () => {
         encriptarBTN()
