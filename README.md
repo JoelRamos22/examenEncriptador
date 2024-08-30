@@ -6,4 +6,9 @@ Examen encriptador German Joel Ramos Jaimes
 
 ### NOTA: *usar el link de netlify para ver el funcionamiento de la APP*  
 
-#### Link: [https://examenencriptadorgermanjoel.netlify.app](link a netlify)
+#### Link: 
+
+```
+https://examenencriptadorgermanjoel.netlify.app
+```
+
